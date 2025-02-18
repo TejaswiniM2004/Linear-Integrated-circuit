@@ -83,6 +83,8 @@ From the AC analysis we get the frequency response curve. From this,
 Gain in dB=28.92dB
 
 
+
+
         
         
 **Theoretical calculations:**
@@ -107,7 +109,7 @@ VDD=1.8V     P=50µW    W=500nm       L=487nm   RD=20KΩ
 
                       Av=-gm*RD
                         =-104.04µS*20KΩ
-                        =2.08
+                        =-2.08
 
 **Result:**
 
