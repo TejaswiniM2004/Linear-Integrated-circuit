@@ -172,4 +172,4 @@ In PMOS,
                         
 
 
-
+![Image](https://github.com/user-attachments/assets/d06a88c1-b965-4fc1-83eb-2fd8f23dee3e)
