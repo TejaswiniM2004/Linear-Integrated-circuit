@@ -111,6 +111,9 @@ VDD=1.8V     P=50µW    W=500nm       L=487nm   RD=20KΩ
                         =-104.04µS*20KΩ
                         =-2.08
 
+   Here negative sign indicates phase shift.
+   
+
 **Result:**
 
 Drain Cureent (ID)=28µA
@@ -128,3 +131,34 @@ From theoretical calculation we get gain as 2.08 but in simulating LTspice we ge
 
  By dc analysis we get operating point as (1.25V, 27.17µA) and mosfet is in                saturation region. 
 I observed that when I increase RD gain also increased.
+
+
+
+## TASK 2 ##
+
+Replace the drain resistor by PMOS for the above circuit and find bias voltage for that to maintain Id as constant.
+
+In PMOS,
+                    
+                       VS=VDD=1.8V         VTH=-0.4V
+
+                        VSB >|VTH|
+                        VS-VB <|VTH|
+                        VB <VS-|VTH|
+                        VB <1.8V-0.4V
+                        VB <1.4V
+
+   VB should be less than 1.4V to operate the PMOS in saturation region.  
+
+   Let VB=1.2V   L=180nm
+
+   Vary width to make ID=27.78µA
+
+   
+
+   
+
+                        
+
+
+
