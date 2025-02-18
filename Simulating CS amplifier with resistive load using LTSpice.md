@@ -156,7 +156,18 @@ In PMOS,
 
    
 
+   ![Image](https://github.com/user-attachments/assets/40ce957e-4121-4a28-aac2-d20b2267a00d)
+
+
+
+
+
+
+
+
    
+
+![Image](https://github.com/user-attachments/assets/6daa5495-8f70-4ff4-8040-50ef87488578)
 
                         
 
