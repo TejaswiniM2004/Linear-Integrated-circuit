@@ -1,17 +1,26 @@
-
- **EXPT3:DIFFERENTIAL AMPLIFIER** 
+ 
+#  **EXPT3:    DIFFERENTIAL AMPLIFIER** 
 
 Design and analyze the differential amplifier for the following specifications VDD=3.3v, P<=3mw,Vicm=1.65v,Vocm=1.7v,Vp=0.5v. Perform DC analysis,transient analysis,frequency response and extract the parameters.
 
- **Aim:**
+ ### **Aim:**
+
      
-Design and analyze the differential amplifier circuit.
+Design and analyze the differential amplifier circuit and extract the parameters.
 
-**Components/Parts required:**
+ 
 
-MOSFETs, resistors, voltage supplies.
 
-**Theory:**
+### **Components/Parts required:**
+
+
++ MOSFETs, 
++ resistors, 
++ voltage supplies.
+
+
+
+### **Theory:**
 
  
 
@@ -19,7 +28,7 @@ MOSFETs, resistors, voltage supplies.
 ![Image](https://github.com/user-attachments/assets/ae5c0fea-fb85-4bfc-a2b8-0f3662bb65ea)
 
 
-Differential-amplifier configuration is the most widely used building
+ Differential-amplifier configuration is the most widely used building
 block in analog integrated-circuit design.There are two reasons why differential amplifiers are so well suited for IC fabrication: First, as we shall shortly see, the performance of the differential pair depends critically on the matching between the two sides of
 the circuit. Integrated-circuit fabrication is capable of providing matched devices whose
 parameters track over wide ranges of changes in environmental conditions. Second, by
@@ -33,10 +42,10 @@ through a resistance RD. If the voltage supply at the gate terminal is the same,
 that the MOSFETs not enter the triode region of operation. It should be in saturation region.
 
 
-**Procedure:**
-
+### **Procedure:**
+####
 +
-    **Step1:**
+    **Step 1:**
     DC analysis
     
     Design Rd and Rss
@@ -73,15 +82,18 @@ Rss=0.555kΩ
 Given: Q-point(1.7V,0.45mA) for both M1 and M2
 
 For this we have to use **.op** command
+###
 
  ![Image](https://github.com/user-attachments/assets/62aefca4-3e5d-470b-a6ac-59c630ece556)
+
 It shows that M1 and M2 are operating in saturation region and this operating point set at width=1.73um
 
 
-+ **Step2:** Transient analysis
++ **Step 2:** Transient analysis
 
-Transient analysis is a  time-domain response of our circuit to various input signals. We can calculate gain of this differential amplifier. We have to use the **.tran** directive to specify the duration of the transient analysis.
+Transient analysis is a  time-domain response of our circuit to various input signals. We can calculate gain of this differential amplifier. We have to use the  **.tran**   directive to specify the duration of the transient analysis.
 
+###
  ![Image](https://github.com/user-attachments/assets/56f92aab-cf27-47d6-8175-d684fc58fe15)
 
 voltage gain,
@@ -94,11 +106,14 @@ voltage gain,
 We can observe that output is amplifying with a gain of 1.4
 
 
-+ **Step3:** AC analysis
++ **Step 3:** AC analysis
 
  AC analysis in LTspice is used to analyze the frequency response of a circuit. It helps to understand how your circuit behaves at different frequencies, which is crucial for designing filters, amplifiers, and other frequency-dependent circuits.
 
+
+
  ![Image](https://github.com/user-attachments/assets/cf3bbd8d-6f13-48fc-87c4-6fdea87042ed)
+
  Use the **.ac** directive to specify the frequency range and number of points for the analysis.
 
           Gain in dB= 20log10(AV)
@@ -109,19 +124,24 @@ We can observe that output is amplifying with a gain of 1.4
 
 
 
-Like this we can do the analysis for replacing the source resistor by (1)current source and 
+**Like this we can do the analysis for replacing the source resistor by** 
+
+ (1)current source and
   
   (2)the mosfet.
 
 
-**Circuit 2:** Replacing source resistor by current source
+**Circuit 2: Replacing source resistor by current source**
+
  + **Step 1:** DC analysis
-![Image](https://github.com/user-attachments/assets/1530308e-35d6-4d18-b984-5574fae71bda)
+ 
+ ![image](https://github.com/user-attachments/assets/5b864773-b6d3-4cde-ad31-da40ef3eb49d)
 
 In the operating values we got the current flowing through the common source terminal is exactly what we had derived in intial stage of the experiment.
 
 + **Step 2:** Transient analysis
 ![Image](https://github.com/user-attachments/assets/aabb9cdd-0508-48e9-9959-1cdb5e96ed0c)
+ 
 
             voltage gain, Av=vout/vin 
 
@@ -149,7 +169,7 @@ Gain is increasing compared to Circuit 1.
 Wev have to work on it.
 
 
-**Circuit 3:** Replacing source resistor by mosfet
+**Circuit 3: Replacing source resistor by mosfet**
 
 Vary the width of M3 to set operating point. Set L=180nm
 
@@ -190,7 +210,9 @@ We know that when  the MOSFET is operating in the saturation (active) region VGD
 
 
 
-**Inference:**
+
+
+### **Inference:**
 
 1.DC Analysis:
 
@@ -212,6 +234,6 @@ We know that when  the MOSFET is operating in the saturation (active) region VGD
 
 + Circuit 3 shows similar performance in terms of transient gain, indicating the MOSFET biasing achieves comparable results to the current source.
 
-**Conclusion:**
+### **Conclusion:**
 
  The differential amplifier design meets the specified requirements, demonstrating stable performance across different configurations. The use of current sources or MOSFETs for biasing enhances the amplifier's gain and frequency response. However, there are minor deviations in the expected gain for Circuit 2, suggesting the need for further optimization. Overall, the design and analysis provide valuable insights into the behavior of differential amplifiers in various configurations.
