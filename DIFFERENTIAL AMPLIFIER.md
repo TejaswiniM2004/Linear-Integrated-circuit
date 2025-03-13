@@ -101,7 +101,7 @@ that the MOSFETs not enter the triode region of operation. It should be in satur
   
   VGD = (1.65 – 3.33) V = -1.65V
   Vth = 0.366 V
-  Since  VGD<Vth  the MOSFET is operating in saturation?active region and can act as an amplifier.
+  Since  VGD<Vth  the MOSFET is operating in saturation/active region and can act as an amplifier.
   We have determined that the MOSFET is in saturation, now we need to set ideal Q-point.
 
 
@@ -114,7 +114,7 @@ For DC analysis we have to use **.op** command. We can see that  Vout, Vp and Id
 + **Step 2:** Transient analysis
 
 Transient analysis is a  time-domain response of our circuit to various input signals. We can calculate gain of this differential amplifier. 
-To perform transient analysis, we will supply an input ac sinusoidal signal, of Vpeak = 50 mV, frequency = 1 kHz, DC offset = 1.72V. Since we know that the differential amplifier rejects common mode signals, we need to give an ac input to only one of the signals, while keeping the other ac input equal to 0. This will give us an ideal gain, while giving ac input to both MOSFETs will give us very little gain. We have to use the  **.tran** directive with stop time equal to 5 ms.
+To perform transient analysis, we will supply an input ac sinusoidal signal, of Vpeak = 50 mV, frequency = 1 kHz, DC offset = 1.65V. Since we know that the differential amplifier rejects common mode signals, we need to give an ac input to only one of the signals, while keeping the other ac input equal to 0. This will give us an ideal gain, while giving ac input to both MOSFETs will give us very little gain. We have to use the  **.tran** directive with stop time equal to 5 ms.
 
 ###
   **CIRCUIT DIAGRAM**
@@ -141,7 +141,7 @@ voltage gain,
        Av=-2.116       Here - sign indicates that output is inverted.
 
 
- Output is amplifying with a gain of 1.4
+ Output is amplifying with a gain of 2.116
 
 
 + **Step 3:** AC analysis
@@ -181,52 +181,95 @@ A current source provides a constant current regardless of the voltage across it
 
 **Circuit 2: Replacing source resistor(R3) by current source**
 
+ 
+   
 **CIRCUIT DIAGRAM**
+
+![image](https://github.com/user-attachments/assets/5a398ac2-f5cb-4382-910c-e2421a61d16f)
 
 
  + **Step 1:** DC analysis
- 
- ![image](https://github.com/user-attachments/assets/5b864773-b6d3-4cde-ad31-da40ef3eb49d)
+
+
+![image](https://github.com/user-attachments/assets/8743e929-e709-4dfd-b2d1-b8567fa708b2)
+
+
 
 In the operating values we got the current flowing through the common source terminal is exactly what we had derived in intial stage of the experiment.
 
+To operate mosfet in saturation region VGD<Vt
+
+        VGD = VG - VD
+            = 1.65v – 3.3V
+        VGD = -1.65V < Vt=0.366V
+        
+Since VGD<VT MOSFET operates in saturation region.
+
+As we can see that VD1 = VD2 = 3.3 V, which is matching with our necessary requirements. ID1 = ID2 = 0.45 mA, ISS = 0.9mA which also matches with our requirements. Vp = 0.5V, which also agrees with our analysis.
+
+Next, we can calculate the power and verify whether or not we are within our power budget.
+
+P = VDD. Iss = 3.3 V x 0.9 mA = 2.97 mW, which satisfies our power budget.
+
+
+
 + **Step 2:** Transient analysis
-![Image](https://github.com/user-attachments/assets/aabb9cdd-0508-48e9-9959-1cdb5e96ed0c)
- 
+
+  To perform transient analysis, we will supply an input ac sinusoidal signal, of Vpeak = 50 mV, frequency = 1 kHz, DC offset = 1.65V. Since we know that the differential amplifier rejects common mode signals, we need to give an ac input to only one of the signals, while keeping the other ac input equal to 0. This will give us an ideal gain, while giving ac input to both MOSFETs will give us very little gain. We have to use the  **.tran** directive with stop time equal to 5 ms.
+
+**CIRCUIT DIAGRAM**
+![image](https://github.com/user-attachments/assets/5a398ac2-f5cb-4382-910c-e2421a61d16f)
+
+
+**INPUT AND OUTPUT VOLTAGES**
+![image](https://github.com/user-attachments/assets/a54e470b-b2d0-4a3d-be16-5c5d417cd8c9)
+
+![image](https://github.com/user-attachments/assets/621b4ae1-e17a-40af-a61a-951ebf45a69f)
+
+
+ We can observe that there is a 180 degree phase shift between the green and blue waveforms. Analyzing the phase shift helps determine the behavior of the differential amplifier.
+ The amplitude of the waveforms provides insight into the gain of the amplifier. Comparing the amplitudes of the input and output signals helps assess the amplification factor.
 
             voltage gain, Av=vout/vin 
 
-                        Av= 121.05187mV/49.0816mV
+                        Av= 59.676845mV/ 48.098292mV
 
-                        Av=-2.466             Here - sign indicates that output is inverted.
+                        Av=-1.24             Here - sign indicates that output is inverted.
 
-Gain is increasing compared to Circuit 1.
+  Output is amplifying with a gain of 1.24.  
 
 
 
 + **Step 3:** AC analysis
+  
+To perform the AC analysis, once again supply ac signal to only of the differential amplifiers, keeping the other ac input equal to 0. Set AC amplitude equal to 1 V, and run the simulation. Use the **.ac** directive to specify the frequency range and number of points for the analysis.
 
-
-![Image](https://github.com/user-attachments/assets/17b5fd5c-c67e-48e7-819e-b07c2c5a7248)
+  
+![image](https://github.com/user-attachments/assets/99ff4570-efdd-45ee-9dd9-17ae34d23dc8)
 
 
          Gain in dB=20log10(Av)
-                  =20log10(2.466)
-                  =7.84dB
+                  =20log10(1.24)
+                  =1.87352dB
 
 
- We should get gain in dB=7.84dB but actually we are getting around 4dB.
+ 
+     From the plot gain in dB=1.955dB
 
-Wev have to work on it.
+  From here we can see that gain in dB matches approximately with our calculated value.
+
+Now, we will move to the final circuit, where we will replace the current source , with a NMOS Transistor. The reason we do this, is due to the fact that the NMOS can behave as a constant current source when operating in the saturation region, so it can act as a constant current source, when the input gate voltage VG is applied to drive the MOSFET into saturation.
+      
+ 
+**Circuit 3: Replacing current source  by NMOS transistor**
 
 
-**Circuit 3: Replacing source resistor by mosfet**
+ ![image](https://github.com/user-attachments/assets/3096f108-149e-4473-b398-4fb7a93da762)
 
-Vary the width of M3 to set operating point. Set L=180nm
 
-+ **Step 1:** Find VG (gate voltage for M3) and DC analysis
++ **Step 1:** DC analysis
 
-We know that when  the MOSFET is operating in the saturation (active) region VGD<=VTH
+We know that when  the MOSFET is operating in the saturation (active) region if VGD<=VTH
 
                     VG-VD<=VTH
                     VG<=VD+VTH
@@ -234,32 +277,56 @@ We know that when  the MOSFET is operating in the saturation (active) region VGD
        Therefore,   VG<=0.866V
 
 
+![image](https://github.com/user-attachments/assets/8235f73e-7b0c-49ac-9545-020b6e77209f)
 
+
+ All the  voltage, current values are matching with our requirements.
  
- ![Image](https://github.com/user-attachments/assets/4216ca2b-a82c-4795-a33d-70d7e9d13d0b)
-
- We get this output at w=8.6554u
-
 
 + **Step 2:** Transient analysis
 
-![Image](https://github.com/user-attachments/assets/24a3590e-a319-4ac9-a79e-b3c972d556c9)
+  INPUT AND OUTPUT VOLTAGES
+  
+![image](https://github.com/user-attachments/assets/a73fcfad-6abe-4911-87dd-884634e9620f)
+
+ ![image](https://github.com/user-attachments/assets/e67cf9b8-6295-4f96-819e-19c707fac381)
+
+
+We can observe that there is a 180 degree phase shift between the green and blue waveforms. Analyzing the phase shift helps determine the behavior of the differential amplifier.
+ The amplitude of the waveforms provides insight into the gain of the amplifier. Comparing the amplitudes of the input and output signals helps assess the amplification factor.
 
 
           voltage gain, Av=vout/vin 
 
-                        Av= 120.37217mV/49.692077mV
+                        Av= 68.430589mV/48.169746mV
+  
+                        Av=-1.42             Here - sign indicates that output is inverted.
 
-                        Av=-2.472             Here - sign indicates that output is inverted.
+  
+  Output is amplifying with a gain of 1.42.
 
-  We get the same gain.
+
 
 
   + **Step 3:** AC analysis
+  + 
 
-  ![Image](https://github.com/user-attachments/assets/d825e670-8bc7-4274-be05-277b5a1a4348)
+    To perform the AC analysis, once again supply ac signal to only of the differential amplifiers, keeping the other ac input equal to 0. Set AC amplitude equal to 1 V, and run the simulation. Use the **.ac** directive to specify the frequency range and number of points for the analysis.
 
 
+ ![image](https://github.com/user-attachments/assets/93a94d49-b810-4d34-af1d-6a5c1754d772)
+
+  
+
+        Gain in dB=20log10(Av)
+                  =20log10(1.42)
+                  =3.0457dB
+
+
+ 
+       From the plot gain in dB=3.083dB
+
+  From here we can see that gain in dB matches approximately with our calculated value.
 
 
 
