@@ -309,22 +309,23 @@ We can observe that there is a 180 degree phase shift between the green and blue
 
 
   + **Step 3:** AC analysis
-  + 
+
+
 
     To perform the AC analysis, once again supply ac signal to only of the differential amplifiers, keeping the other ac input equal to 0. Set AC amplitude equal to 1 V, and run the simulation. Use the **.ac** directive to specify the frequency range and number of points for the analysis.
-
-
- ![image](https://github.com/user-attachments/assets/93a94d49-b810-4d34-af1d-6a5c1754d772)
 
   
 
         Gain in dB=20log10(Av)
                   =20log10(1.42)
                   =3.0457dB
+                  
 
 
- 
-       From the plot gain in dB=3.083dB
+ ![image](https://github.com/user-attachments/assets/93a94d49-b810-4d34-af1d-6a5c1754d772)
+
+
+      From the plot gain in dB=3.083dB
 
   From here we can see that gain in dB matches approximately with our calculated value.
 
